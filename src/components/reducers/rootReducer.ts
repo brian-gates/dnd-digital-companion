@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 import { IState } from "../store/configStore";
-import { todos } from "./todosReducer";
+import { app } from "./appReducer";
 
 export const initState: IState = {
-    todos: [],
+    key: String
 };
 
 export const rootReducer = combineReducers({
-    todos,
+    app,
 });
