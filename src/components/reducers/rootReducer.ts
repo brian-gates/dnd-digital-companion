@@ -5,8 +5,8 @@ import { app } from "./appReducer";
 export const initState: IState = {
     key: "",
     airtableConfig: {
-        apiKey: "",
-        baseId: "",
+        apiKey: localStorage.getItem("airtable.apiKey") || "",
+        baseId: localStorage.getItem("airtable.baseId") || "",
     },
 };
 

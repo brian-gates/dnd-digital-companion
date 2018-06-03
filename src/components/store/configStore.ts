@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, Dispatch } from "redux";
 import {composeWithDevTools} from "redux-devtools-extension/developmentOnly";
 import thunk from "redux-thunk";
-import { initStoreAction, loadCharactersBegin } from "../actions/actions";
+import { initStoreAction } from "../actions/actions";
 import { rootReducer } from "../reducers/rootReducer";
 import { IAirtableConfig } from "../actions/actionTypes";
-import Airtable from "airtable";
+// import Airtable from "airtable";
 
 export interface IState {
     key: string;
@@ -19,7 +19,7 @@ export const initStore = () => {
 
 export const loadCharacters = () => {
     return (dispatch: Dispatch<{}>) => {
-        dispatch(loadCharactersBegin());
+        // dispatch(loadCharactersBegin());
         // const base = new Airtable({ apiKey }).base(baseId);
         // base("Characters").select({
         //     sort: [
@@ -33,8 +33,7 @@ export const loadCharacters = () => {
         // }, function done(error: Error) {
         //     console.log(error);
         // });
-
-        return dispatch(loadCharactersAction());
+        // return dispatch(loadCharactersAction());
     };
 };
 

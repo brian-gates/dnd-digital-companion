@@ -3,3 +3,4 @@
 /built/
 package-lock.json
 .vs
+.vscode

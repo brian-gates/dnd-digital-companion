@@ -1,3 +1,4 @@
 {
-    "tsimporter.doubleQuotes": true
+    "tsimporter.doubleQuotes": true,
+    "tslint.autoFixOnSave": true
 }

@@ -8,12 +8,11 @@ export const app = (
 ) => {
     switch (action.type) {
         case actions.ActionTypes.CONFIGURE_AIRTABLE:
+            const airtableConfig = (action as actions.IConfigureAirtableAction).config;
             return {
-                airtableConfig: (action as actions.IConfigureAirtableAction).config,
+                airtableConfig,
                 ...state,
             };
-        case actions.ActionTypes.INIT_STORE:
-            return (action as actions.IInitStoreAction);
         default:
             return state;
     }
