@@ -2,3 +2,4 @@
 /dist/
 /built/
 package-lock.json
+.vs
