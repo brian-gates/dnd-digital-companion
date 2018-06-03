@@ -6,11 +6,6 @@ export const ActionTypes = {
     LOAD_CHARACTERS: "LOAD_CHARACTERS",
 };
 
-export interface IAirtableConfig {
-    apiKey: string;
-    baseId: string;
-}
-
-export interface IConfigureAirtableAction extends Action {
-    config: IAirtableConfig;
-}
+export const loadCharactersAction = (): Action => ({
+    type: ActionTypes.LOAD_CHARACTERS,
+});

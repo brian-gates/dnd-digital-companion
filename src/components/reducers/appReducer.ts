@@ -7,12 +7,13 @@ export const app = (
     action: Action,
 ) => {
     switch (action.type) {
+        case actions.ActionTypes.CONFIGURE_AIRTABLE:
+            return {
+                airtableConfig: (action as actions.IConfigureAirtableAction).config,
+                ...state,
+            };
         case actions.ActionTypes.INIT_STORE:
             return (action as actions.IInitStoreAction);
-        case actions.ActionTypes.SET_KEY: {
-            const key = (action as actions.ISetKeyAction).key;
-            return { key, ...state };
-        }
         default:
             return state;
     }

@@ -1,8 +1,13 @@
-import { ActionTypes, IInitStoreAction } from "./actionTypes";
+import { ActionTypes, IConfigureAirtableAction, IAirtableConfig } from "./actionTypes";
+import { Action } from "redux";
 
-export const initStoreAction = (): IInitStoreAction => {
-    return { type: ActionTypes.INIT_STORE };
-};
+export const initStoreAction = (): Action => ({ type: ActionTypes.INIT_STORE });
 
-export const actionCreators = {
-};
+export const configureAirtableAction = (config: IAirtableConfig): IConfigureAirtableAction => ({
+    type: ActionTypes.CONFIGURE_AIRTABLE,
+    config,
+});
+
+export const loadCharactersAction = (): Action => ({
+    type: ActionTypes.LOAD_CHARACTERS,
+});

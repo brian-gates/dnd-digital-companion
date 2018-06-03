@@ -3,7 +3,11 @@ import { IState } from "../store/configStore";
 import { app } from "./appReducer";
 
 export const initState: IState = {
-    key: String
+    key: "",
+    airtableConfig: {
+        apiKey: "",
+        baseId: "",
+    },
 };
 
 export const rootReducer = combineReducers({
