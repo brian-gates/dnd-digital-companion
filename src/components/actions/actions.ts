@@ -7,7 +7,3 @@ export const configureAirtableAction = (config: IAirtableConfig): IConfigureAirt
     type: ActionTypes.CONFIGURE_AIRTABLE,
     config,
 });
-
-export const loadCharactersAction = (): Action => ({
-    type: ActionTypes.LOAD_CHARACTERS,
-});

@@ -1,11 +1,16 @@
 import { Action } from "redux";
-
-export const ActionTypes = {
-    INIT_STORE: "INIT_STORE",
-    CONFIGURE_AIRTABLE: "CONFIGURE_AIRTABLE",
-    LOAD_CHARACTERS: "LOAD_CHARACTERS",
-};
+import { IFetchSuccess, IFetchFailure, ActionTypes } from "./actionTypes";
 
 export const loadCharactersAction = (): Action => ({
-    type: ActionTypes.LOAD_CHARACTERS,
+    type: ActionTypes.LOAD_CHARACTERS_BEGIN,
+});
+
+export const loadCharactersSuccess = (payload: object[]): IFetchSuccess => ({
+    type: ActionTypes.LOAD_CHARACTERS_BEGIN,
+    payload,
+});
+
+export const loadCharactersFailure = (error: Error): IFetchFailure => ({
+    type: ActionTypes,
+    error,
 });
