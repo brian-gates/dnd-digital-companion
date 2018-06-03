@@ -2,7 +2,8 @@ import { Action } from "redux";
 
 export const ActionTypes = {
     INIT_STORE: "INIT_STORE",
-    CONFIGURE_AIRTABLE: "CONFIGURE_AIRTABLE",
+    UPDATE_AIRTABLE_KEY: "UPDATE_AIRTABLE_KEY",
+    UPDATE_AIRTABLE_BASE_ID: "UPDATE_AIRTABLE_BASE_ID",
     LOAD_CHARACTERS_BEGIN: "LOAD_CHARACTERS_BEGIN",
     LOAD_CHARACTERS_SUCCESS: "LOAD_CHARACTERS_SUCCESS",
     LOAD_CHARACTERS_FAILURE: "LOAD_CHARACTERS_FAILURE",
@@ -14,6 +15,10 @@ export interface IFetchSuccess extends Action {
 
 export interface IFetchFailure extends Action {
     error: Error;
+}
+
+export interface IStringValueAction extends Action {
+    value: string;
 }
 
 export interface IAirtableConfig {

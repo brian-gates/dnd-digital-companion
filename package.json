@@ -17,18 +17,20 @@
     "type": "git",
     "url": "https://github.com/chunliu/typescript-react-hot-reload"
   },
-"dependencies": {
-    "airtable": "^0.5.6",
+  "dependencies": {
     "@material-ui/core": "^1.1.0",
     "@material-ui/icons": "^1.1.0",
     "@types/node": "10.1.4",
+    "@types/ramda": "^0.25.32",
     "@types/react": "16.3.14",
     "@types/react-dom": "16.0.5",
     "@types/react-redux": "5.0.15",
     "@types/react-router": "4.0.25",
     "@types/react-router-config": "1.0.6",
     "@types/react-router-dom": "4.2.6",
+    "airtable": "^0.5.6",
     "antd": "3.5.4",
+    "ramda": "^0.25.0",
     "react": "16.4.0",
     "react-dom": "16.4.0",
     "react-redux": "5.0.7",
@@ -37,7 +39,7 @@
     "react-router-dom": "4.2.2",
     "redux": "3.7.2",
     "redux-thunk": "2.2.0"
-},
+  },
   "devDependencies": {
     "@types/enzyme": "3.1.10",
     "@types/jest": "22.2.3",

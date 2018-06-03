@@ -1,66 +1,47 @@
 import * as React from "react";
-import Button from "@material-ui/core/Button";
 import { TextField } from "@material-ui/core";
 import { IAirtableConfig } from "../actions/actionTypes";
+import { connect } from "react-redux";
+import { IState } from "../store/configStore";
+import { pipe, tap, compose } from "ramda";
+import { Dispatch } from "redux";
+import { updateKey, updateBaseId } from "../actions/airtableActions";
+
+const log = console.log.bind(console);
 
 interface Props {
     config: IAirtableConfig;
-    onSave: (config: IAirtableConfig) => void;
+    onApiKeyChanged: (key: string) => void;
+    onBaseIdChanged: (baseId: string) => void;
 }
+const eventToTargetValue = (event: React.ChangeEvent<HTMLInputElement>) => event.target.value;
 
-interface State {
-    config: IAirtableConfig;
-}
+const AirtableConfig = ({
+    config,
+    onApiKeyChanged,
+    onBaseIdChanged,
+}: Props): JSX.Element =>
+    <form>
+        <h1>Airtable Configuration</h1>
+        <TextField
+            label="API Key"
+            value={config.apiKey}
+            onChange={pipe(eventToTargetValue, onApiKeyChanged)}
+        />
+        <TextField
+            label="Base ID"
+            value={config.baseId}
+            onChange={pipe(eventToTargetValue, onBaseIdChanged)}
+        />
+    </form>;
 
-class AirtableConfig extends React.Component<{}, {}> {
+const mapStateToProps = ({ app }: { app: IState}) => ({
+    config: app.airtableConfig,
+});
 
-    public props: Props;
-    public state: State = {
-        config: {
-            apiKey: "",
-            baseId: "",
-        },
-    };
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    onApiKeyChanged: compose(dispatch, updateKey),
+    onBaseIdChanged: compose(dispatch, updateBaseId),
+});
 
-    protected constructor(props: Props) {
-        super(props);
-        const { apiKey = "", baseId = "" } = props.config;
-        this.state.config = { apiKey, baseId };
-    }
-
-    public render(): JSX.Element {
-        return (
-            <form>
-                <h1>Airtable Configuration</h1>
-                <TextField
-                    label="API Key"
-                    value={this.state.config.apiKey}
-                    onChange={this.bindEventTargetValueToStateKey("apiKey")}
-                />
-                <TextField
-                    label="Base ID"
-                    value={this.state.config.baseId}
-                    onChange={this.bindEventTargetValueToStateKey("baseId")}
-                />
-                <Button
-                    variant="raised"
-                    color="primary"
-                    onClick={this.onSave}
-                >
-                    Save
-                </Button>
-            </form>
-        );
-    }
-
-    protected onSave = () => this.props.onSave(this.state.config);
-
-    private bindEventTargetValueToStateKey(stateKey: string) {
-        return (event: { target: { value: string; }; }) => {
-            this.setState({ [stateKey]: event.target.value });
-        };
-    }
-
-}
-
-export default AirtableConfig;
+export default connect(mapStateToProps, mapDispatchToProps)(AirtableConfig);
