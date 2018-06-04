@@ -1,10 +1,20 @@
-import { Action } from "redux";
-import { initState } from "./rootReducer";
+import { IAirtableConfig, ActionTypes } from "../actions/actionTypes";
 import * as actions from "../actions/actionTypes";
-import { ActionTypes } from "../actions/actionTypes";
+import { Action } from "redux";
 
-export const app = (
-    state = initState,
+export interface IState {
+    config: IAirtableConfig;
+}
+
+const initialState: IState = {
+    config: {
+        apiKey: localStorage.getItem("airtable.apiKey") || "",
+        baseId: localStorage.getItem("airtable.baseId") || "",
+    },
+};
+
+export default (
+    state = initialState,
     action: Action,
 ) => {
     switch (action.type) {
@@ -13,8 +23,8 @@ export const app = (
             localStorage.setItem("airtable.apiKey", apiKey);
             return {
                 ...state,
-                airtableConfig: {
-                    ...state.airtableConfig,
+                config: {
+                    ...state.config,
                     apiKey,
                 },
             };
@@ -23,8 +33,8 @@ export const app = (
             localStorage.setItem("airtable.baseId", baseId);
             return {
                 ...state,
-                airtableConfig: {
-                    ...state.airtableConfig,
+                config: {
+                    ...state.config,
                     baseId,
                 },
             };

@@ -2,13 +2,14 @@ import { createStore, applyMiddleware, Dispatch } from "redux";
 import {composeWithDevTools} from "redux-devtools-extension/developmentOnly";
 import thunk from "redux-thunk";
 import { initStoreAction } from "../actions/actions";
-import { rootReducer } from "../reducers/rootReducer";
+
+import rootReducer from "../reducers/root";
 import { IAirtableConfig } from "../actions/actionTypes";
 // import Airtable from "airtable";
+import { IState as AirtableState } from "../reducers/airtable";
 
 export interface IState {
-    key: string;
-    airtableConfig: IAirtableConfig;
+    airtable: AirtableState;
 }
 
 export const initStore = () => {

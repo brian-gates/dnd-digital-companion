@@ -3,16 +3,14 @@ import { TextField } from "@material-ui/core";
 import { IAirtableConfig } from "../actions/actionTypes";
 import { connect } from "react-redux";
 import { IState } from "../store/configStore";
-import { pipe, tap, compose } from "ramda";
+import { pipe } from "ramda";
 import { Dispatch } from "redux";
 import { updateKey, updateBaseId } from "../actions/airtableActions";
 
-const log = console.log.bind(console);
-
 interface Props {
     config: IAirtableConfig;
-    onApiKeyChanged: (key: string) => void;
-    onBaseIdChanged: (baseId: string) => void;
+    onApiKeyChanged: (value: string) => void;
+    onBaseIdChanged: (value: string) => void;
 }
 const eventToTargetValue = (event: React.ChangeEvent<HTMLInputElement>) => event.target.value;
 
@@ -26,6 +24,7 @@ const AirtableConfig = ({
         <TextField
             label="API Key"
             value={config.apiKey}
+            type="password"
             onChange={pipe(eventToTargetValue, onApiKeyChanged)}
         />
         <TextField
@@ -35,13 +34,11 @@ const AirtableConfig = ({
         />
     </form>;
 
-const mapStateToProps = ({ app }: { app: IState}) => ({
-    config: app.airtableConfig,
-});
+const mapStateToProps = ({ airtable: { config } }: IState) => ({ config });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-    onApiKeyChanged: compose(dispatch, updateKey),
-    onBaseIdChanged: compose(dispatch, updateBaseId),
+const mapDispatchToProps = (dispatch: Dispatch<{}>) => ({
+    onApiKeyChanged: (value: string) => dispatch(updateKey(value)),
+    onBaseIdChanged: (value: string) => dispatch(updateBaseId(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AirtableConfig);
