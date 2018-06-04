@@ -12,23 +12,18 @@ export const ActionTypes = {
     LOAD_CHARACTERS_FAILURE: "LOAD_CHARACTERS_FAILURE",
 };
 
-export interface IFetchSuccess extends Action {
+export interface IErrorAction extends Action {
+    error: Error;
+}
+
+export interface IFetchSuccessAction extends Action {
     payload: object[];
 }
 
-export interface IFetchFailure extends Action {
+export interface IFetchFailureAction extends Action {
     error: Error;
 }
 
 export interface IStringValueAction extends Action {
     value: string;
-}
-
-export interface IAirtableConfig {
-    apiKey: string;
-    baseId: string;
-}
-
-export interface IConfigureAirtableAction extends Action {
-    config: IAirtableConfig;
 }

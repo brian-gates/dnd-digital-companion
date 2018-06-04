@@ -4,37 +4,15 @@ import thunk from "redux-thunk";
 import { initStoreAction } from "../actions/actions";
 
 import rootReducer from "../reducers/root";
-import { IAirtableConfig } from "../actions/actionTypes";
-// import Airtable from "airtable";
-import { IState as AirtableState } from "../reducers/airtable";
+import { IAirtableState } from "../reducers/airtable";
 
 export interface IState {
-    airtable: AirtableState;
+    airtable: IAirtableState;
 }
 
 export const initStore = () => {
     return (dispatch: Dispatch<{}>) => {
         return dispatch(initStoreAction());
-    };
-};
-
-export const loadCharacters = () => {
-    return (dispatch: Dispatch<{}>) => {
-        // dispatch(loadCharactersBegin());
-        // const base = new Airtable({ apiKey }).base(baseId);
-        // base("Characters").select({
-        //     sort: [
-        //         { field: "Name", direction: "asc" },
-        //     ],
-        // }).eachPage(function page(records, fetchNextPage) {
-        //     records.forEach(function(record) {
-        //         console.log("Retrieved ", record.get("Name"));
-        //     });
-        //     fetchNextPage();
-        // }, function done(error: Error) {
-        //     console.log(error);
-        // });
-        // return dispatch(loadCharactersAction());
     };
 };
 

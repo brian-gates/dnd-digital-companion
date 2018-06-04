@@ -1,11 +1,12 @@
 import * as React from "react";
 import { TextField } from "@material-ui/core";
-import { IAirtableConfig } from "../actions/actionTypes";
 import { connect } from "react-redux";
 import { IState } from "../store/configStore";
 import { pipe } from "ramda";
 import { Dispatch } from "redux";
 import { updateKey, updateBaseId } from "../actions/airtableActions";
+import AirtableConfigTest from "./AirtableConfigTest";
+import { IAirtableConfig } from "../reducers/airtable";
 
 interface Props {
     config: IAirtableConfig;
@@ -32,6 +33,7 @@ const AirtableConfig = ({
             value={config.baseId}
             onChange={pipe(eventToTargetValue, onBaseIdChanged)}
         />
+        <AirtableConfigTest />
     </form>;
 
 const mapStateToProps = ({ airtable: { config } }: IState) => ({ config });

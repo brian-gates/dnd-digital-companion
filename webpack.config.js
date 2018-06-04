@@ -66,7 +66,8 @@ module.exports = {
                               }) ]
                             }),
                             compilerOptions: {
-                              module: 'es2015'
+                              module: 'es2015',
+                              downlevelIteration: true,
                             }
                         },
                     }, 
