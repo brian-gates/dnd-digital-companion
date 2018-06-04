@@ -52,5 +52,4 @@ export const testAirtable = () => async (dispatch: Dispatch<{}>, getState: () =>
             error,
         });
     }
-
 };

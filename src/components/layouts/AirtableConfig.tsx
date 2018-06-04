@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TextField } from "@material-ui/core";
+import { TextField, Typography, Paper, withStyles } from "@material-ui/core";
 import { connect } from "react-redux";
 import { IState } from "../store/configStore";
 import { pipe } from "ramda";
@@ -12,28 +12,44 @@ interface Props {
     config: IAirtableConfig;
     onApiKeyChanged: (value: string) => void;
     onBaseIdChanged: (value: string) => void;
+    classes: {
+        root: string;
+    };
 }
 const eventToTargetValue = (event: React.ChangeEvent<HTMLInputElement>) => event.target.value;
+
+const styles = (theme) => ({
+    root: theme.mixins.gutters({
+        paddingTop: 16,
+        paddingBottom: 16,
+        marginTop: theme.spacing.unit * 3,
+    }),
+});
 
 const AirtableConfig = ({
     config,
     onApiKeyChanged,
     onBaseIdChanged,
+    classes,
 }: Props): JSX.Element =>
     <form>
-        <h1>Airtable Configuration</h1>
-        <TextField
-            label="API Key"
-            value={config.apiKey}
-            type="password"
-            onChange={pipe(eventToTargetValue, onApiKeyChanged)}
-        />
-        <TextField
-            label="Base ID"
-            value={config.baseId}
-            onChange={pipe(eventToTargetValue, onBaseIdChanged)}
-        />
-        <AirtableConfigTest />
+        <Paper className={classes.root}>
+            <Typography gutterBottom variant="title" component="h2">Airtable Configuration</Typography>
+            <TextField
+                label="API Key"
+                value={config.apiKey}
+                type="password"
+                onChange={pipe(eventToTargetValue, onApiKeyChanged)}
+            />
+            <TextField
+                label="Base ID"
+                value={config.baseId}
+                onChange={pipe(eventToTargetValue, onBaseIdChanged)}
+            />
+        </Paper>
+        <Paper className={classes.root}>
+            <AirtableConfigTest />
+        </Paper>
     </form>;
 
 const stateToProps = ({ airtable: { config } }: IState) => ({ config });
@@ -43,4 +59,4 @@ const dispatchToProps = (dispatch: Dispatch<{}>) => ({
     onBaseIdChanged: (value: string) => dispatch(updateBaseId(value)),
 });
 
-export default connect(stateToProps, dispatchToProps)(AirtableConfig);
+export default withStyles(styles)(connect(stateToProps, dispatchToProps)(AirtableConfig));

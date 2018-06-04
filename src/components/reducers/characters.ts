@@ -2,7 +2,10 @@ import { Action } from "redux";
 import { ActionTypes, IErrorAction, IPayloadAction } from "../actions/actionTypes";
 
 export interface ICharacter {
-    name: string;
+    id: string;
+    fields: {
+        Name: string;
+    };
 }
 
 export interface ICharacterState {

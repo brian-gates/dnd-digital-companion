@@ -4,7 +4,7 @@ import { IState } from "../store/configStore";
 import { Dispatch } from "redux";
 import { testAirtable } from "../actions/airtableActions";
 import { IAirtableConfig, IAirtableConfigTest, ConfigStatus } from "../reducers/airtable";
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 interface Props {
     config: IAirtableConfig;
@@ -21,8 +21,8 @@ const AirtableConfigTest = ({
         startTest();
     }
     return <>
-        <h2>Airtable Configuration Test</h2>
-        <Button onClick={startTest}>
+        <Typography gutterBottom variant="title" component="h2">Airtable Configuration Test</Typography>
+        <Button variant="raised" color="primary" onClick={startTest}>
             Test
         </Button>
         {ConfigStatus.Testing === status && <p>Testing...</p>}
