@@ -1,5 +1,6 @@
 import * as React from "react";
 import AirtableConfig from "../layouts/AirtableConfig";
+import Characters from "../layouts/Characters";
 
 class HomePage extends React.Component<{}, {}> {
 
@@ -7,6 +8,7 @@ class HomePage extends React.Component<{}, {}> {
         return (
             <>
                 <AirtableConfig />
+                <Characters />
             </>
         );
     }

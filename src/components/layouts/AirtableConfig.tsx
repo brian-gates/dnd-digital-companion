@@ -36,11 +36,11 @@ const AirtableConfig = ({
         <AirtableConfigTest />
     </form>;
 
-const mapStateToProps = ({ airtable: { config } }: IState) => ({ config });
+const stateToProps = ({ airtable: { config } }: IState) => ({ config });
 
-const mapDispatchToProps = (dispatch: Dispatch<{}>) => ({
+const dispatchToProps = (dispatch: Dispatch<{}>) => ({
     onApiKeyChanged: (value: string) => dispatch(updateKey(value)),
     onBaseIdChanged: (value: string) => dispatch(updateBaseId(value)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AirtableConfig);
+export default connect(stateToProps, dispatchToProps)(AirtableConfig);

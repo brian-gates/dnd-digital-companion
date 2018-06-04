@@ -16,12 +16,8 @@ export interface IErrorAction extends Action {
     error: Error;
 }
 
-export interface IFetchSuccessAction extends Action {
+export interface IPayloadAction extends Action {
     payload: object[];
-}
-
-export interface IFetchFailureAction extends Action {
-    error: Error;
 }
 
 export interface IStringValueAction extends Action {
