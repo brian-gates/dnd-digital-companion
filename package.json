@@ -1,7 +1,7 @@
 {
-  "name": "hotloader",
+  "name": "dnd-digital-assistant",
   "version": "1.1.4",
-  "description": "A simple template for creating react app using TypeScript with hot reload.",
+  "description": "A digital assistant for playing Dungeons & Dragons.",
   "main": "index.js",
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' --exclude 'src/tests/*.{ts,tsx}'",
@@ -11,14 +11,14 @@
     "clean": "rd /s/q built",
     "prepare": "tsc && webpack --progress --config webpack.prod.config.js"
   },
-  "author": "Chun Liu",
+  "author": "Brian Gates",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chunliu/typescript-react-hot-reload"
+    "url": "https://github.com/brian-gates/character-sheet"
   },
   "dependencies": {
-    "@material-ui/core": "^1.1.0",
+    "@material-ui/core": "^1.2.0",
     "@material-ui/icons": "^1.1.0",
     "@types/node": "10.1.4",
     "@types/ramda": "^0.25.32",
@@ -29,7 +29,6 @@
     "@types/react-router-config": "1.0.6",
     "@types/react-router-dom": "4.2.6",
     "airtable": "^0.5.6",
-    "antd": "3.5.4",
     "ramda": "^0.25.0",
     "react": "16.4.0",
     "react-dom": "16.4.0",

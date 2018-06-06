@@ -5,7 +5,6 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { loadCharactersAction } from "../actions/characters";
 import { Button, Card, Typography, CardContent } from "@material-ui/core";
-import withStyles from "./AirtableConfig";
 
 interface IProps {
     characters: ICharacter[];
@@ -16,7 +15,7 @@ const Character = (character: ICharacter): JSX.Element =>
     <Card key={character.id}>
         <CardContent>
             <Typography gutterBottom variant="headline" component="h2">
-            {character.fields.Name}
+                {character.fields.Name}
             </Typography>
             <Typography component="p">
                 {character.fields.Description}

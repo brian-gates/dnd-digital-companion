@@ -26,7 +26,7 @@ const AirtableConfigTest = ({
             Test
         </Button>
         {ConfigStatus.Testing === status && <p>Testing...</p>}
-        {ConfigStatus.Invalid === status && <p>Failed with error: {error}</p>}
+        {ConfigStatus.Invalid === status && <p>Failed with error: {String(error)}</p>}
         {ConfigStatus.Valid === status && <p>Success!</p>}
     </>;
 };

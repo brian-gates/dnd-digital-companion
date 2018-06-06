@@ -5,6 +5,7 @@ export interface ICharacter {
     id: string;
     fields: {
         Name: string;
+        Description: string;
     };
 }
 
