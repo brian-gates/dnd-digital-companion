@@ -3,12 +3,13 @@
 ## Todo
 
 - [x] Airtable Config
-- [ ] Theming
+- [x] Theming
 - [ ] Initiative
 - [ ] Character
 - [ ] Monster
 - [ ] Spellbook
 - [ ] General Layout / Navigation
+- [ ] Tests
 
 Design Inspirations
 

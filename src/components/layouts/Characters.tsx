@@ -21,14 +21,15 @@ const Character = (character: ICharacter): JSX.Element =>
                 {character.fields.Description}
             </Typography>
         </CardContent>
-    </Card>;
+    </Card>
+;
 
-const Characters = ({ characters, loadCharacters }: IProps): JSX.Element => {
-    return <>
+const Characters = ({ characters, loadCharacters }: IProps): JSX.Element =>
+    <>
         <Button variant="raised" color="primary" onClick={loadCharacters}>Load Characters</Button>
-        {characters.map(Character)}
-    </>;
-};
+        {characters.map(Character).join("")}
+    </>
+;
 
 const stateToProps = ({ characters }: IState) => ({ characters: characters.characters });
 const dispatchToProps = (dispatch: Dispatch<{}>) => ({

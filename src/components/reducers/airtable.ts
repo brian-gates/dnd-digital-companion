@@ -26,8 +26,8 @@ export enum ConfigStatus {
 
 const initialState: IAirtableState = {
     config: {
-        apiKey: localStorage.getItem("airtable.apiKey") || "",
-        baseId: localStorage.getItem("airtable.baseId") || "",
+        apiKey: window.localStorage && window.localStorage.getItem("airtable.apiKey") || "",
+        baseId: window.localStorage && window.localStorage.getItem("airtable.baseId") || "",
     },
     test: {
         status: ConfigStatus.Untested,

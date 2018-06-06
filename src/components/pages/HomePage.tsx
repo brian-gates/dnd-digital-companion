@@ -5,6 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
+import Initiative from "../layouts/Initiative";
 
 const styles = {
     root: {
@@ -33,7 +34,9 @@ const HomePage = ({ classes }: object): JSX.Element =>
         </AppBar>
         <CssBaseline />
         <AirtableConfig />
-        <Characters />;
-    </div>;
+        <Initiative />
+        <Characters />
+    </div>
+;
 
 export default withStyles(styles)(HomePage);
