@@ -1,3 +1,5 @@
+import { ICharacter } from "./../reducers/characters";
+import { IPayloadAction } from "./actionTypes";
 import { Action } from "redux";
 
 export const ActionTypes = {
@@ -18,6 +20,10 @@ export interface IErrorAction extends Action {
 
 export interface IPayloadAction extends Action {
     payload: object[];
+}
+
+export interface ICharacterPayload extends IPayloadAction {
+    payload: ICharacter[];
 }
 
 export interface IStringValueAction extends Action {

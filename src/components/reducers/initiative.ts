@@ -1,45 +1,23 @@
+import { ICharacter } from "./characters";
+import { ICharacterPayload } from "./../actions/actionTypes";
 import { Action } from "redux";
 import { ActionTypes, IErrorAction, IPayloadAction } from "../actions/actionTypes";
+import { sortBy, path } from "ramda";
 
-export interface IImage {
-    id: string;
-    url: string;
-    thumbnails: {
-        small: { url: string; };
-        large: { url: string; };
-    };
-}
-
-export interface ICharacter {
-    id: string;
-    fields: {
-        Name: string;
-        Description: string;
-        "Inspirational images": IImage[];
-        "Max Hitpoints": number;
-        "Max HP": number;
-        "Current Hitpoints": number;
-        "In Combat": boolean;
-        "Initiative": number;
-    };
-}
-
-export interface ICharacterState {
-    status: LoadStatus;
+interface IInitiativeState {
     characters: ICharacter[];
 }
 
-export enum LoadStatus {
-    Idle,
-    InProgress,
-    Succeeded,
-    Failed,
-}
-
-const initialState: ICharacterState = {
-    status: LoadStatus.Idle,
+const initialState: IInitiativeState = {
     characters: [],
 };
+
+const characterInCombat
+    : (character: ICharacter) => boolean
+    = (character) => character.fields["In Combat"]
+;
+
+const sortByInitiative = sortBy(path(["fields", "Initiative"]));
 
 export default (state = initialState, action: Action) => {
     switch (action.type) {
@@ -48,7 +26,7 @@ export default (state = initialState, action: Action) => {
                 ...state,
                 loading: true,
             };
-            case ActionTypes.LOAD_CHARACTERS_FAILURE:
+        case ActionTypes.LOAD_CHARACTERS_FAILURE:
             return {
                 ...state,
                 loading: false,
@@ -60,7 +38,7 @@ export default (state = initialState, action: Action) => {
                 ...state,
                 loading: false,
                 failed: false,
-                characters: (action as IPayloadAction).payload,
+                characters: sortByInitiative((action as ICharacterPayload).payload.filter(characterInCombat)),
             };
         default:
             break;

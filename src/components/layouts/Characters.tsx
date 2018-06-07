@@ -27,7 +27,7 @@ const Character = (character: ICharacter): JSX.Element =>
 const Characters = ({ characters, loadCharacters }: IProps): JSX.Element =>
     <>
         <Button variant="raised" color="primary" onClick={loadCharacters}>Load Characters</Button>
-        {characters.map(Character).join("")}
+        {characters.map(Character)}
     </>
 ;
 

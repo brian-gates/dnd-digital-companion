@@ -3,27 +3,22 @@ import { ICharacter } from "../reducers/characters";
 import { IState } from "../store/configStore";
 import { loadCharactersAction } from "../actions/characters";
 import { connect } from "react-redux";
-import { Typography } from "@material-ui/core";
-
-interface IInitiativeItemProps {
-    character: ICharacter;
-}
-
-const InitiativeItem = ({ character }: IInitiativeItemProps): JSX.Element =>
-    <>{character.fields.Name}</>
-;
+import { Typography, Button, ListItem, List, ListItemText, Avatar, LinearProgress } from "@material-ui/core";
+import InitiativeItem from "./InitiativeItem";
 
 interface IInitiativeProps {
     characters: ICharacter[];
+    loadCharacters: () => void;
 }
 
-const Initiative = ({ characters  }: IInitiativeProps): JSX.Element =>
-    <>
+const Initiative = ({ characters, loadCharacters }: IInitiativeProps): JSX.Element =>
+    <List>
         <Typography variant="headline">Initiative</Typography>
+        <Button variant="raised" color="primary" onClick={loadCharacters}>Load Characters</Button>
         {characters.map((character) =>
-            <InitiativeItem character={character} />,
+            <InitiativeItem key={character.id} character={character} />,
         )}
-    </>
+    </List>
 ;
 
 const stateToProps = ({ characters }: IState) => ({ characters: characters.characters });
