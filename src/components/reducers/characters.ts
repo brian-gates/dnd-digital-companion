@@ -1,6 +1,6 @@
 import { Action } from "redux";
 import { ActionTypes, IErrorAction, IPayloadAction } from "../actions/actionTypes";
-import { AsyncStatus } from "../store/configStore";
+import { AsyncStatus } from "./root";
 
 export interface IImage {
     id: string;
