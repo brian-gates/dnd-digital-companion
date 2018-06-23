@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { IState } from "../store/configStore";
 import { pipe } from "ramda";
 import { Dispatch } from "redux";
-import { updateKey, updateBaseId } from "../actions/airtableActions";
+import { updateKey, updateBaseId } from "../actions/airtable";
 import AirtableConfigTest from "./AirtableConfigTest";
 import { IAirtableConfig } from "../reducers/airtable";
 

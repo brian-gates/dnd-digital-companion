@@ -45,3 +45,5 @@ export const queryToPayload = (query: IQuery): Promise<object[]> =>
         });
     })
 ;
+
+export const selectSpells = select("Spells");

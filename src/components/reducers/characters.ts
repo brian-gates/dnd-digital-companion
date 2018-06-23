@@ -1,5 +1,6 @@
 import { Action } from "redux";
 import { ActionTypes, IErrorAction, IPayloadAction } from "../actions/actionTypes";
+import { AsyncStatus } from "../store/configStore";
 
 export interface IImage {
     id: string;
@@ -24,20 +25,13 @@ export interface ICharacter {
     };
 }
 
-export interface ICharacterState {
-    status: LoadStatus;
+export interface ICharactersState {
+    status: AsyncStatus;
     characters: ICharacter[];
 }
 
-export enum LoadStatus {
-    Idle,
-    InProgress,
-    Succeeded,
-    Failed,
-}
-
-const initialState: ICharacterState = {
-    status: LoadStatus.Idle,
+const initialState: ICharactersState = {
+    status: AsyncStatus.Idle,
     characters: [],
 };
 

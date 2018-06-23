@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { IState } from "../store/configStore";
 import { Dispatch } from "redux";
-import { testAirtable } from "../actions/airtableActions";
+import { testAirtable } from "../actions/airtable";
 import { IAirtableConfig, IAirtableConfigTest, ConfigStatus } from "../reducers/airtable";
 import { Button, Typography } from "@material-ui/core";
 
@@ -13,7 +13,6 @@ interface Props {
 }
 
 const AirtableConfigTest = ({
-    config: { apiKey, baseId },
     test: { status, error },
     startTest,
 }: Props): JSX.Element => {
@@ -21,7 +20,9 @@ const AirtableConfigTest = ({
         startTest();
     }
     return <>
-        <Typography gutterBottom variant="title" component="h2">Airtable Configuration Test</Typography>
+        <Typography gutterBottom variant="title" component="h2">
+            Airtable Configuration Test
+        </Typography>
         <Button variant="raised" color="primary" onClick={startTest}>
             Test
         </Button>

@@ -6,6 +6,7 @@ import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import Initiative from "../layouts/Initiative";
+import SpellCleanup from "../layouts/SpellCleanup";
 
 const styles = {
     root: {
@@ -32,6 +33,7 @@ const HomePage = ({ classes }: object): JSX.Element =>
                 </Typography>
             </Toolbar>
         </AppBar>
+        <SpellCleanup />
         <CssBaseline />
         <AirtableConfig />
         <Initiative />

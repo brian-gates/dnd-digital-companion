@@ -5,11 +5,11 @@ import { initStoreAction } from "../actions/actions";
 
 import rootReducer from "../reducers/root";
 import { IAirtableState } from "../reducers/airtable";
-import { ICharacterState } from "../reducers/characters";
+import { ICharactersState } from "../reducers/characters";
 
 export interface IState {
     airtable: IAirtableState;
-    characters: ICharacterState;
+    characters: ICharactersState;
 }
 
 export const initStore = () => {

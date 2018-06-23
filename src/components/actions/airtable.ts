@@ -28,6 +28,20 @@ export const updateBaseId = (baseId: string): IStringValueAction => ({
     value: baseId,
 });
 
+export const fixAirtable = () => async (dispatch: Dispatch<{}>, getState: () => IState) => {
+    const { airtable: {
+        config: { apiKey, baseId },
+    } } = getState();
+    if (!(apiKey && baseId)) {
+        return;
+    }
+
+    dispatch({
+        type: ActionTypes.FIX_DESCRIPTIONS_BEGIN,
+    } as Action);
+
+};
+
 export const testAirtable = () => async (dispatch: Dispatch<{}>, getState: () => IState) => {
     const { airtable: {
         config,

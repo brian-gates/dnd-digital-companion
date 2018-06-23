@@ -9,6 +9,7 @@
 - [ ] Monster
 - [ ] Spellbook
 - [ ] General Layout / Navigation
+- [ ] Random NPC Generator
 - [ ] Tests
 
 Design Inspirations
